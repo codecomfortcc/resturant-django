@@ -42,5 +42,5 @@ ENV/
 ENV.bak/
 venv.bak/
 
-*.sqlite3
+# *.sqlite3
 .env
