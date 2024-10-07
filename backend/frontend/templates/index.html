@@ -1,0 +1,406 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <link rel="stylesheet" href="{% static 'css/hero.css' %}">
+  <link rel="stylesheet" href="{% static 'css/about.css' %}">
+  <link rel="stylesheet" href="{% static 'css/contact-page.css' %}">
+  <link rel="stylesheet" href="{% static 'css/footer.css' %}">
+  <link rel="stylesheet" href="{% static 'css/main-course.css' %}">
+  <link rel="stylesheet" href="{% static 'css/menu.css' %}">
+  <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
+  <link rel="stylesheet" href="{% static 'css/our-story.css' %}">
+  <link rel="stylesheet" href="{% static 'css/strengths.css' %}">
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+  <div id="navbar-container">
+    <nav class="navbar-container" id="navbar">
+      <div class="links-container">
+        <ul>
+          <li class="tooltip-container">
+            <a href="{% url 'index' %}" class="nav-link {% if request.path == '/' %}active{% endif %}">
+              <i data-lucide="home"></i>
+            </a>
+            <span class="tooltip">Home</span>
+          </li>
+          <li class="tooltip-container">
+            <a href="{% url 'about' %}" class="nav-link {% if request.path == '/about/' %}active{% endif %}">
+              <i data-lucide="info"></i>
+            </a>
+            <span class="tooltip">About</span>
+          </li>
+          <li class="tooltip-container">
+            <a href="{% url 'menu' %}" class="nav-link {% if request.path == '/menu/' %}active{% endif %}">
+              <i data-lucide="utensils"></i>
+            </a>
+            <span class="tooltip">Menu</span>
+          </li>
+          <li class="tooltip-container">
+            <a href="{% url 'contact' %}" class="nav-link {% if request.path == '/contact/' %}active{% endif %}">
+              <i data-lucide="mail"></i>
+            </a>
+            <span class="tooltip">Contact</span>
+          </li>
+          
+          <!-- Check if user is authenticated -->
+          {% if request.user.is_authenticated %}
+            <li class="tooltip-container">
+              <a href="{% url 'dashboard' %}" class="nav-link {% if request.path == '/dashboard/' %}active{% endif %}">
+                <i data-lucide="layout-dashboard"></i>
+              </a>
+              <span class="tooltip">Dashboard</span>
+            </li>
+            <li class="tooltip-container">
+              <a href="{% url 'logout' %}"class="nav-link {% if request.path == '/logout/' %}active{% endif %}">
+                <i data-lucide="log-out"></i>
+              </a>
+              <span class="tooltip">Logout</span>
+            </li>
+          {% else %}
+            <li class="tooltip-container">
+              <a href="{% url 'reservation' %}" class="nav-link {% if request.path == '/reservation/' %}active{% endif %}">
+                <i data-lucide="calendar"></i>
+              </a>
+              <span class="tooltip">Reservation</span>
+            </li>
+            <li class="tooltip-container">
+              <a href="{% url 'auth' %}" class="nav-link {% if request.path == '/auth/' %}active{% endif %}">
+                <i data-lucide="log-in"></i>
+              </a>
+              <span class="tooltip">Login</span>
+            </li>
+          {% endif %}
+        </ul>
+      </div>
+    </nav>
+  </div>
+
+  <div id="root">
+    <main class="smooth-scroll-container">
+      <div class="smooth-scroll-content">
+          <section id="hero">
+
+    <div class="hero-content">
+      <div class="gradient"></div>
+      <div class="main-hero-container">
+        <h1 class="heading">Gourmet Haven</h1>
+        <embed type="image/svg+xml" src="{%static 'assets/scribble.svg'%}" class="svg-animation"></embed>
+      </div>
+      <p>Experience culinary excellence</p>
+      <button class="slide-button">Find a Table</button>
+    </div>
+  </section>
+  <section id="Top-notch">
+    <h2 class="section-heading first-heading">Top notch dish</h2>
+    <div class="book-container">
+      <div class="book">
+        <div class="book-content">
+          <h1 class="book-heading">Chettinad chicken</h1>
+          <p>
+            Chettinad Chicken is a fiery and flavorful dish from Tamil Nadu, known for its rich spice blend. Marinated with freshly ground spices and cooked with coconut, this dish is bold, aromatic, and a must-try for those who love spicy and savory flavors.
+          </p>
+     
+          <button class="button">Find a Table</button>
+        </div>
+        <div class="cover">
+          <img src="https://www.whiskaffair.com/wp-content/uploads/2020/09/Chicken-Chettinad-Curry-2-3.jpg" alt="Paneer Butter Masala">
+          <div class="image-data book-image">
+            <h2>Chettinad chicken</h2>
+            <p>hover to view</p>
+        </div>
+        </div>
+       </div>
+       <div class="book">
+        <div class="book-content">
+          <h1 class="book-heading">Tandoori Chicken</h1>
+          <p>
+            Tandoori Chicken is a popular North Indian dish, marinated in yogurt and spices, and roasted in a clay oven. It's known for its smoky flavor and vibrant color, offering a juicy and mildly spiced delight perfect for any meal.
+          </p>
+          <button class="button">Find a Table</button>
+        </div>
+        <div class="cover">
+          <img src="https://onestophalal.com/cdn/shop/articles/air_fryer_chicken_tandoori-1694242200588_800x.jpg?v=1694242335" alt="Paneer Butter Masala">
+          <div class="image-data book-image">
+            <h2>Tandoori chicken</h2>
+            <p>hover to view</p>
+        </div>
+        </div> 
+       </div>
+    </div>
+  </section>
+  <section id="menu">
+    <div class="menu-container">
+      <h1 class="section-heading">Delicious Menu</h1>
+      <div class="menu-grid">
+        <div class="timeline">
+          <div class="timeline-progress"></div>
+        </div>
+        <div class="menu-item" data-name="Paneer Butter Masala" data-price="$15.00" data-description="Cottage cheese cubes cooked in rich tomato and butter gravy." data-tag="POPULAR">
+          <div class="menu-item-image">
+            <img src="https://www.yummytummyaarthi.com/wp-content/uploads/2021/12/1.jpg" alt="Paneer Butter Masala">
+          </div>
+          <div class="menu-item-content">
+            <h2>Paneer Butter Masala</h2>
+            <div class="price-tag">
+              <span class="price">$15.00</span>
+              <span class="tag">POPULAR</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="menu-item" data-name="Hyderabadi Biryani" data-price="$20.00" data-description="Aromatic basmati rice with succulent marinated meat and spices." data-tag="SPICY">
+          <div class="menu-item-image">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS4BlIJlt27z9zxU8QR5akPL1vb840pmpti4g&s" alt="Hyderabadi Biryani">
+          </div>
+          <div class="menu-item-content">
+            <h2>Hyderabadi Biryani</h2>
+            <div class="price-tag">
+              <span class="price">$20.00</span>
+              <span class="tag">SPICY</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="menu-item" data-name="Masala Dosa" data-price="$8.00" data-description="Crispy rice crepe stuffed with spicy mashed potatoes." data-tag="VEGAN">
+          <div class="menu-item-image">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSRKEoKRezBKpHWYUIbZaKX9Kw_qCv-hQfTVw&s" alt="Masala Dosa">
+          </div>
+          <div class="menu-item-content">
+            <h2>Masala Dosa</h2>
+            <div class="price-tag">
+              <span class="price">$8.00</span>
+              <span class="tag">VEGAN</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="menu-item" data-name="Rogan Josh" data-price="$18.00" data-description="A flavorful lamb curry cooked with Kashmiri chili and spices." data-tag="SPECIAL">
+          <div class="menu-item-image">
+            <img src="https://www.yummytummyaarthi.com/wp-content/uploads/2014/10/1-13.jpg" alt="Rogan Josh">
+          </div>
+          <div class="menu-item-content">
+            <h2>Rogan Josh</h2>
+            <div class="price-tag">
+              <span class="price">$18.00</span>
+              <span class="tag">SPECIAL</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="menu-item" data-name="Butter Naan" data-price="$3.00" data-description="Soft, buttery Indian flatbread made in a tandoor.">
+          <div class="menu-item-image">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRkoN7zC2UdJ20iNskqiyO-PzbGAuuRJdfIWQ&s" alt="Butter Naan">
+          </div>
+          <div class="menu-item-content">
+            <h2>Butter Naan</h2>
+            <span class="price">$3.00</span>
+          </div>
+        </div>
+        
+        <div class="menu-item" data-name="Gulab Jamun" data-price="$5.00" data-description="Sweet fried dough soaked in cardamom-flavored sugar syrup.">
+          <div class="menu-item-image">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3Nb_9txUG0E4-dopc4QMFkaqLKF27qVN3xw&s" alt="Gulab Jamun">
+          </div>
+          <div class="menu-item-content">
+            <h2>Gulab Jamun</h2>
+            <span class="price">$5.00</span>
+          </div>
+        </div>
+      </div>
+      <div class="menu-footer">
+        <p>During winter daily from 7:00 pm to 9:00 pm</p>
+        <a href="/menu" class="view-all">VIEW ALL MENU</a>
+      </div> 
+    </div>
+  </section>
+  <section id="our-story">
+    <article class="our-story-container">
+      <div class="d3-card">
+        <div class="d3-card-inner">
+          <div class="d3-card-front">
+            <img
+              src="https://st.depositphotos.com/1518767/4293/i/950/depositphotos_42930411-stock-photo-concentrated-male-chef-garnishing-food.jpg"
+              alt="Our Story"
+            />
+          </div>
+          <div class="image-data">
+            <h2>Our Story</h2>
+            <p>Authentic Indian flavors</p>
+          </div>
+        </div>
+      </div>
+      <div class="story-content">
+        <h1 class="section-heading">Our Story</h1>
+        <p class="story-paragraph">
+          Nestled in the heart of the city,
+          <span class="highlight">Gourmet haven</span> was founded in
+          <span class="highlight">2015</span> with a passion for bringing
+          authentic Indian flavors to our community. Our journey began with
+          a simple idea: to serve the finest dishes made with love and
+          tradition.
+        </p>
+        <p class="story-paragraph">
+          Our team of culinary experts, hailing from diverse regions of
+          India, crafts each dish using traditional recipes passed down
+          through generations. From the rich spices of North India to the
+          coastal delicacies of the South, our menu is a celebration of
+          India’s vibrant culinary heritage.
+        </p>
+
+        <!-- <div class="timeline-two ">
+                <div class="timeline-item">2015 - Restaurant established</div>
+                <div class="timeline-item">2018 - Introduced our signature buffet</div>
+                <div class="timeline-item">2020 - Expanded to catering services</div>
+                <div class="timeline-item">2023 - Celebrated our 8th anniversary with a community event</div>
+            </div> -->
+      </div>
+    </article>
+  </section>
+
+<section id="strengths-section">
+  <h1 class="section-heading">Our Strengths</h1>
+  <div class="strengths-grid">
+    <div class="strength-card">
+      <div class="strength-icon">
+        <img  src="{%static 'assets/restaurant.svg'%}"alt="" />
+      </div>
+      <div class="strength-name">Hygiene</div>
+    </div>
+    <div class="strength-card">
+      <div class="strength-icon">
+        <img src="{%static 'assets/chef.svg'%}" alt="" />
+      </div>
+      <div class="strength-name">Top-notch Chefs</div>
+    </div>
+    <div class="strength-card">
+      <div class="strength-icon">
+        <img src="{%static 'assets/natural.svg'%}" alt="" />
+      </div>
+      <div class="strength-name">Quality Ingredients</div>
+    </div>
+    <div class="strength-card">
+      <div class="strength-icon">
+        <img src="{%static 'assets/customer-satisfaction.svg'%}" alt="" />
+      </div>
+      <div class="strength-name">Excellent Service</div>
+    </div>
+  </div>
+</section>
+  <section id="footer">
+    <footer class="footer">
+      <div class="footer-content">
+        <a href="#" class="footer-logo">Gourmet Haven</a>
+        <div class="footer-links">
+          <a href="/">Home</a>
+          <a href="/menu">Menu</a>
+          <a href="/about">About</a>
+          <a href="/contact">Contact</a>
+        </div>
+        <ul class="wrapper">
+          <li class="icon facebook">
+            <span class="tooltip">Facebook</span>
+            <svg
+            viewBox="0 0 320 512"
+            height="1.2em"
+            fill="currentColor"
+            xmlns="http://www.w3.org/2000/svg"
+            style="color: #ffffff; fill: #ffffff"
+          >
+            <path
+              d="M279.14 288l14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z"
+            ></path>
+          </svg>
+
+          </li>
+          <li class="icon twitter">
+            <span class="tooltip">Twitter</span>
+            <svg
+            height="1.8em"
+            fill="currentColor"
+            style="color: #ffffff; fill: #ffffff"
+            viewBox="0 0 48 48"
+            xmlns="http://www.w3.org/2000/svg"
+            class="twitter"
+          >
+            <path
+              d="M42,12.429c-1.323,0.586-2.746,0.977-4.247,1.162c1.526-0.906,2.7-2.351,3.251-4.058c-1.428,0.837-3.01,1.452-4.693,1.776C34.967,9.884,33.05,9,30.926,9c-4.08,0-7.387,3.278-7.387,7.32c0,0.572,0.067,1.129,0.193,1.67c-6.138-0.308-11.582-3.226-15.224-7.654c-0.64,1.082-1,2.349-1,3.686c0,2.541,1.301,4.778,3.285,6.096c-1.211-0.037-2.351-0.374-3.349-0.914c0,0.022,0,0.055,0,0.086c0,3.551,2.547,6.508,5.923,7.181c-0.617,0.169-1.269,0.263-1.941,0.263c-0.477,0-0.942-0.054-1.392-0.135c0.94,2.902,3.667,5.023,6.898,5.086c-2.528,1.96-5.712,3.134-9.174,3.134c-0.598,0-1.183-0.034-1.761-0.104C9.268,36.786,13.152,38,17.321,38c13.585,0,21.017-11.156,21.017-20.834c0-0.317-0.01-0.633-0.025-0.945C39.763,15.197,41.013,13.905,42,12.429"
+            ></path>
+          </svg>
+
+          </li>
+          <li class="icon instagram">
+            <span class="tooltip">Instagram</span>
+            <svg
+            xmlns="http://www.w3.org/2000/svg"
+            height="1.2em"
+            fill="#ffffff"
+            style="color: #ffffff; fill: #ffffff"
+            class="bi bi-instagram"
+            viewBox="0 0 16 16"
+          >
+            <path
+              d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z"
+            ></path>
+          </svg>
+
+          </li>
+        </ul>
+        <div class="newsletter">
+          <h3 class="newsletter-title">Subscribe to our newsletter</h3>
+          <form class="newsletter-form">
+            <input
+              type="email"
+              class="newsletter-input"
+              placeholder="Enter your email"
+              required
+            />
+            <button type="submit" class="newsletter-button">
+              Subscribe
+            </button>
+          </form>
+        </div>
+        <div class="seperator"></div>
+        <div class="copyright">
+          &copy; 2023 Gourmet Haven. All rights reserved.
+        </div>
+      </div>
+    </footer>
+  </section>
+  </div>
+</main>
+<div class="popup-overlay">
+  <div class="popup-content">
+    <button class="popup-close">&times;</button>
+    <img
+      src=""
+      alt=""
+      style="width: 100%; height: 200px; object-fit: cover"
+    />
+
+    <div class="popup-container">
+      <h2></h2>
+      <p class="price"></p>
+      <p class="description"></p>
+      <span class="tag"></span>
+    </div>
+  </div>
+  </div>
+</div>
+<script>
+  lucide.createIcons();
+</script>
+<script src="{%static 'js/3d-hover.js' %}"></script>
+<script src="{%static 'js/strength.js' %}"></script>
+<script src="{%static 'js/timeline.js' %}"></script>
+<script  src="{%static 'js/smooth-scroll.js' %}"></script>
+<script src="{% static 'js/navbar/navbar.js' %}"></script>
+</body>
+</html>
+

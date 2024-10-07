@@ -1,0 +1,75 @@
+.dashboard-container {
+  max-width: 1200px;
+  margin: 20px auto;
+  padding: 2rem;
+}
+
+.dashboard-section-heading {
+  font-size: 2rem;
+  text-align: center;
+  padding: 20px 5px;
+  margin-bottom: 20px;
+  color: var(--primary);
+}
+
+.dashboard-reservations-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.dashboard-reservation-card {
+  background-color: var(--secondary);
+  border-radius: 1git init
+  0px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.dashboard-card-header {
+  background-color: var(--primary);
+  padding: 1rem;
+}
+
+.dashboard-card-header h2 {
+
+  margin: 0;
+  font-size: 1.25rem;
+  color: var(--secondary-foreground);
+}
+
+.dashboard-card-content {
+  padding: 1rem;
+}
+
+.dashboard-card-content p {
+  margin: 0.5rem 0;
+}
+
+.dashboard-card-footer {
+  background-color: var(--muted);
+  padding: 1rem;
+}
+
+.dashboard-delete-btn {
+  width: 100%;
+  padding: 0.5rem;
+  background-color: var(--destructive);
+  color: var(--destructive-foreground);
+  border: none;
+  border-radius: var(--radius);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: inherit;
+  font-size: 1rem;
+}
+
+.dashboard-delete-btn:hover {
+  opacity: 0.9;
+}
+
+.delete-btn svg {
+  margin-right: 0.5rem;
+}

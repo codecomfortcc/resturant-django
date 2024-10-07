@@ -1,0 +1,131 @@
+.gourmet-about {
+  background-color: #0c0a09;
+  color: #fafaf9;
+  padding: 2rem;
+  font-family: 'Arial', sans-serif;
+  max-width: 1200px;
+  margin: 0 auto;
+  margin-top: 2rem;
+}
+
+.gourmet-about__title {
+  color: #ea580c;
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.gourmet-about__tagline {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  text-align: center;
+  font-style: italic;
+}
+
+.gourmet-about__nav {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.gourmet-about__nav-button {
+  background-color: #1c1917;
+  color: #fafaf9;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-size: 1rem;
+}
+
+
+
+.gourmet-about__nav-button--active {
+  background-color: #ea580c;
+}
+
+.gourmet-about__section {
+  background-color: #1c1917;
+  padding: 2rem;
+  border-radius: 0.5rem;
+  margin-bottom: 2rem;
+  display: none;
+}
+
+.gourmet-about__section--active {
+  display: block;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.gourmet-about__section-title {
+  color: #ea580c;
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.gourmet-about__content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.gourmet-about__image {
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+  border-radius: 0.5rem;
+  align-self: center;
+}
+
+.gourmet-about__text {
+  flex: 1;
+}
+
+.gourmet-about__list {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.gourmet-about__list li {
+  margin-bottom: 0.75rem;
+  position: relative;
+  padding-left: 1.5rem;
+}
+
+.gourmet-about__list li::before {
+  content: '•';
+  color: #ea580c;
+  position: absolute;
+  left: 0;
+  font-size: 1.2em;
+}
+
+@media (min-width: 768px) {
+  .gourmet-about__content {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+
+  .gourmet-about__image {
+    max-width: 300px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .gourmet-about {
+    padding: 4rem;
+  }
+
+  .gourmet-about__image {
+    max-width: 400px;
+  }
+}

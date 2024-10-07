@@ -1,0 +1,169 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <link rel="stylesheet" href="{% static 'css/hero.css' %}">
+  <link rel="stylesheet" href="{% static 'css/about.css' %}">
+  <link rel="stylesheet" href="{% static 'css/contact-page.css' %}">
+  <link rel="stylesheet" href="{% static 'css/footer.css' %}">
+  <link rel="stylesheet" href="{% static 'css/main-course.css' %}">
+  <link rel="stylesheet" href="{% static 'css/menu-page.css' %}">
+  <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
+
+  <link rel="stylesheet" href="{% static 'css/reservation.css' %}">
+  <link rel="stylesheet" href="{% static 'css/seats.css' %}">
+  <link rel="stylesheet" href="{% static 'css/signup.css' %}">
+  <link rel="stylesheet" href="{% static 'css/strengths.css' %}">
+</head>
+<body>
+
+  <div id="navbar-container">
+    <nav class="navbar-container" id="navbar">
+      <div class="links-container">
+        <ul>
+          <li class="tooltip-container">
+            <a href="{% url 'index' %}" class="nav-link {% if request.path == '/' %}active{% endif %}">
+              <i data-lucide="home"></i>
+            </a>
+            <span class="tooltip">Home</span>
+          </li>
+          <li class="tooltip-container">
+            <a href="{% url 'about' %}" class="nav-link {% if request.path == '/about/' %}active{% endif %}">
+              <i data-lucide="info"></i>
+            </a>
+            <span class="tooltip">About</span>
+          </li>
+          <li class="tooltip-container">
+            <a href="{% url 'menu' %}" class="nav-link {% if request.path == '/menu/' %}active{% endif %}">
+              <i data-lucide="utensils"></i>
+            </a>
+            <span class="tooltip">Menu</span>
+          </li>
+          <li class="tooltip-container">
+            <a href="{% url 'contact' %}" class="nav-link {% if request.path == '/contact/' %}active{% endif %}">
+              <i data-lucide="mail"></i>
+            </a>
+            <span class="tooltip">Contact</span>
+          </li>
+          
+          <!-- Check if user is authenticated -->
+          {% if request.user.is_authenticated %}
+            <li class="tooltip-container">
+              <a href="{% url 'dashboard' %}" class="nav-link {% if request.path == '/dashboard/' %}active{% endif %}">
+                <i data-lucide="layout-dashboard"></i>
+              </a>
+              <span class="tooltip">Dashboard</span>
+            </li>
+            <li class="tooltip-container">
+              <a href="{% url 'logout' %}"class="nav-link {% if request.path == '/logout/' %}active{% endif %}">
+                <i data-lucide="log-out"></i>
+              </a>
+              <span class="tooltip">Logout</span>
+            </li>
+          {% else %}
+            <li class="tooltip-container">
+              <a href="{% url 'reservation' %}" class="nav-link {% if request.path == '/reservation/' %}active{% endif %}">
+                <i data-lucide="calendar"></i>
+              </a>
+              <span class="tooltip">Reservation</span>
+            </li>
+            <li class="tooltip-container">
+              <a href="{% url 'auth' %}" class="nav-link {% if request.path == '/auth/' %}active{% endif %}">
+                <i data-lucide="log-in"></i>
+              </a>
+              <span class="tooltip">Login</span>
+            </li>
+          {% endif %}
+        </ul>
+      </div>
+    </nav>
+  </div>
+  <main id="about-container" class="gourmet-about">
+    <h1 class="gourmet-about__title">About Gourmet</h1>
+    <p class="gourmet-about__tagline">Discover the essence of authentic Indian cuisine in every bite.</p>
+    
+    <nav class="gourmet-about__nav">
+      <button class="gourmet-about__nav-button" data-section="story">Our Story</button>
+      <button class="gourmet-about__nav-button" data-section="difference">What Sets Us Apart</button>
+      <button class="gourmet-about__nav-button" data-section="offerings">What We Offer</button>
+      <button class="gourmet-about__nav-button" data-section="team">Our Team</button>
+    </nav>
+    
+    <section id="story" class="gourmet-about__section gourmet-about__section--active">
+      <h2 class="gourmet-about__section-title">Our Story</h2>
+      <div class="gourmet-about__content">
+        <img src="{%static '/assets/our-story.jpeg' %}" alt="Gourmet Restaurant Interior" class="gourmet-about__image">
+          <div class="gourmet-about__text">
+            <p>Gourmet was born in 2010 from a passion for authentic Indian cuisine and a desire to share the rich flavors of our heritage with the world. Our founders, the Patel family, drew from generations of culinary expertise to create a dining experience that transports guests to the vibrant streets of India.</p>
+            <p>What started as a small family-run eatery has blossomed into a beloved culinary destination. Our journey has been marked by a commitment to quality, authenticity, and innovation, earning us numerous accolades and a loyal following of food enthusiasts.</p>
+            <p>Today, Gourmet stands as a testament to the enduring appeal of Indian cuisine, offering a blend of traditional recipes and modern culinary techniques that continue to delight and surprise our guests.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="difference" class="gourmet-about__section">
+      <h2 class="gourmet-about__section-title">What Sets Us Apart</h2>
+      <div class="gourmet-about__content">
+        <img src="{%static '/assets/what-sets-apart.jpeg' %}"  alt="Gourmet Spice Selection" class="gourmet-about__image">
+        <div class="gourmet-about__text">
+          <ul class="gourmet-about__list">
+            <li>Authentic recipes passed down through generations, preserving the true essence of Indian flavors</li>
+            <li>Locally sourced, organic ingredients that ensure the freshest and most vibrant tastes in every dish</li>
+            <li>A culinary team that masterfully blends traditional techniques with modern innovations</li>
+            <li>An immersive dining atmosphere that reflects the warmth and vibrancy of Indian culture</li>
+            <li>Seasonal menus that showcase the diversity of India's regional cuisines</li>
+            <li>Partnerships with local farmers and a commitment to sustainable food practices</li>
+            <li>A wine list curated to perfectly complement the complex flavors of our dishes</li>
+          </ul>
+        </div>
+    </section>
+    <section id="offerings" class="gourmet-about__section">
+      <h2 class="gourmet-about__section-title">What we offer</h2>
+      <div class="gourmet-about__content">
+        <img src="{%static '/assets/what-we-offer.jpeg' %}" alt="Gourmet Dish Presentation" class="gourmet-about__image">
+        <div class="gourmet-about__text">
+          <ul class="gourmet-about__list">
+            <li>Unparalleled Hospitality: Our staff embodies the art of Indian hospitality, ensuring you feel like honored guests in our home</li>
+            <li>Culinary Excellence: Each dish is a masterpiece, crafted with precision and care by our expert chefs</li>
+            <li>Dietary Accommodations: We offer an extensive range of vegetarian, vegan, and gluten-free options without compromising on flavor</li>
+            <li>Cultural Experience: More than just a meal, we offer a journey through the diverse regions of India</li>
+            <li>Cooking Classes: Learn the secrets of Indian cuisine in our monthly cooking workshops led by our head chef</li>
+            <li>Private Events: Host your special occasions in our elegantly designed private dining areas</li>
+            <li>Catering Services: Bring the Gourmet experience to your events with our bespoke catering options</li>
+          </ul>
+        </div>
+      </div>
+      </div>
+    </section>
+    <section id="team" class="gourmet-about__section">
+      <h2 class="gourmet-about__section-title">Our Team</h2>
+      <div class="gourmet-about__content">
+        <img src="{%static '/assets/our-team.jpeg' %}"  alt="Gourmet Chef Team" class="gourmet-about__image">
+        <div class="gourmet-about__text">
+          <p>At the heart of Gourmet is our dedicated team of culinary experts and hospitality professionals:</p>
+          <ul class="gourmet-about__list">
+            <li>Executive Chef Priya Sharma: A renowned figure in Indian cuisine, Chef Priya brings 20 years of experience and innovation to our kitchen</li>
+            <li>Sous Chef Rahul Kapoor: Trained in both classical Indian and modern international techniques, Rahul adds a contemporary flair to our traditional dishes</li>
+            <li>Pastry Chef Anita Desai: Creator of our unique Indo-Western fusion desserts that have become a hallmark of the Gourmet experience</li>
+            <li>Sommelier David Chen: Our wine expert ensures the perfect pairing for every dish, enhancing the overall dining experience</li>
+            <li>Hospitality Director Raj Patel: With his warm demeanor and attention to detail, Raj ensures that every guest feels welcomed and valued</li>
+          </ul>
+          <p>Together, our team works tirelessly to create an unforgettable dining experience that honors the rich tapestry of Indian culinary traditions while embracing modern gastronomy.</p>
+        </div>
+      </div>
+      </div>
+    </section>
+  </main>
+  <script>
+    lucide.createIcons();
+  </script>
+  <script src="{% static 'js/about/animate.js' %}"></script>
+  <script src="{% static 'js/navbar/navbar.js' %}"></script>
+</body>
+</html>

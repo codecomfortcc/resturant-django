@@ -1,0 +1,281 @@
+.form-container {
+  width: 100%;
+  max-width: 400px;
+  background-color: var(--foreground);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.5s ease;
+}
+.form-wrapper{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+.form {
+  display: none;
+  transition: all 0.5s ease;
+}
+
+.form.active {
+  display: block;
+}
+
+.form-toggle {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 20px;
+}
+
+.form-toggle button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 16px;
+  padding: 10px;
+  transition: all 0.3s ease;
+}
+
+.form-toggle button.active {
+  color:var(--primary);
+  border-bottom: 2px solid var(--primary);
+}
+
+.inputForm {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+  position: relative;
+  
+}
+
+.inputForm svg {
+  margin-right: 10px;
+}
+
+.input {
+  flex-grow: 1;
+  padding: 10px;
+  padding-right: 30px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  background-color: var(--foreground);
+}
+
+.button-submit {
+  width: 100%;
+  padding: 12px;
+  background-color: var(--primary);
+  color: var(--foreground);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+label {
+  color: var(--secondary);
+}
+.button-submit:hover {
+  background-color: var(--primary);
+}
+.login-heading{
+  text-align: center;
+  margin-bottom: 20px;
+  color:var(--secondary);
+  font-weight: 800;
+  font-size:2rem;
+}
+.flex-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.p {
+  text-align: center;
+  margin-top: 15px;
+}
+
+.span {
+  color: var(--primary);
+  cursor: pointer;
+}
+
+.line {
+  position: relative;
+  margin: 20px 0;
+}
+
+.line::before,
+.line::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 45%;
+  height: 1px;
+  background-color: #ccc;
+}
+
+.line::before {
+  left: 0;
+}
+
+.line::after {
+  right: 0;
+}
+
+.btn {
+  width: 48%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: var(--foreground);
+  cursor: pointer;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn svg {
+  margin-right: 10px;
+}
+
+@media (max-width: 500px) {
+  .form-container {
+    width: 100%;
+    padding: 15px;
+    max-width: 100%;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .form-toggle button {
+    font-size: 14px;
+  }
+
+  .input {
+    padding: 8px;
+  }
+  .input-icon{
+    display: none;
+  }
+  .button-submit {
+    padding: 10px;
+    font-size: 14px;
+  }
+  .flex-row{
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+    gap:3px;
+  }
+}
+.checkbox-container input {
+  display: none;
+}
+
+.checkbox-container {
+
+  position: relative;
+  cursor: pointer;
+  font-size: 20px;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+  position: relative;
+  top: 0;
+  left: 0;
+  height: 1rem;
+  width: 1rem;
+  display: inline-block;
+  background-color: #2196F300;
+  border-radius: 0.25em;
+  transition: all 0.25s;
+}
+
+
+.checkbox-container input:checked ~ .checkmark {
+  background-color: var(--primary);
+}
+
+
+.checkmark:after {
+  content: "";
+  position: absolute;
+  transform: rotate(0deg);
+  border: 0.1em solid black;
+  left: 0;
+  top: 0;
+  width: 12px;
+  height:  12px;
+  border-radius: 0.25em;
+  transition: all 0.25s, border-width 0.1s;
+}
+
+/* Show the checkmark when checked */
+.checkbox-container input:checked ~ .checkmark:after {
+  left: 4px;
+  top: 2px;
+  width: 0.25rem;
+  height: 0.5rem;
+  border-color: #fff0 white white #fff0;
+  border-width: 0 0.15em 0.15em 0;
+  border-radius: 0em;
+  transform: rotate(45deg);
+}
+.input-icon{
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  right:-3px;
+  top:10px;
+
+}
+.flex{
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap:10px;
+
+}
+
+.otp-input-group {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.otp-input {
+  width: 45px;
+  height: 45px;
+  text-align: center;
+  font-size: 20px;
+  border: 2px solid #ddd;
+  border-radius: 5px;
+  margin-right: 10px;
+  transition: border-color 0.3s;
+}
+
+.otp-input:focus {
+  border-color: var(--primary);
+  outline: none;
+}
+
+.otp-input-group .otp-input:last-child {
+  margin-right: 0;
+}
+
+

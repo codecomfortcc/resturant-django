@@ -1,0 +1,243 @@
+#menu{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    background-color: var(--background);
+    overflow: hidden;
+    position: relative;
+} 
+.menu-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  position: relative;
+}
+    
+.menu-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  position: relative;
+}
+
+.menu-item {
+  background-color: var(--secondary);
+  border-radius: 8px;
+
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
+  display: flex;
+  /* height: 120px; */
+  /* border-style: solid; */
+  /* border-width: 0.002rem;
+  border-color: var(--primary); */
+}
+.menu-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+.menu-item-image {
+  width: 50%;
+  position: relative;
+overflow: hidden;
+}
+
+.menu-item img {
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 16/9;
+  object-fit: cover;
+}
+.menu-item-content {
+  width: 100%;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.menu-item h2 {
+  margin: 0 0 10px 0;
+  font-size: 1.2em;
+  color: var(--primary);
+  display: inline-block;
+}
+.price {
+  color: #fff;
+  font-weight: bold;
+}
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s, visibility 0.3s;
+}
+.popup-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+.popup-content {
+  background-color: var(--secondary);
+  padding: 30px;
+  border-radius: 8px;
+  max-width: 500px;
+  width: 90%;
+  transform: scale(0.8);
+  opacity: 0;
+  transition: transform 0.3s, opacity 0.3s;
+}
+.popup-overlay.active .popup-content {
+  transform: scale(1);
+  opacity: 1;
+}
+.price-tag{
+  display: flex;
+  gap:10px;
+
+}
+.popup-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 1.5em;
+  cursor: pointer;
+}
+.tag {
+  font-size: 0.8em;
+  padding: 2px 6px;
+  background-color: var(--primary);
+  color: #1a1a1a;
+  border-radius: 4px;
+  margin-left: 10px;
+}
+.timeline {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background-color: #333;
+  transform: translateX(-50%);
+}
+.timeline-progress {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  background-color: var(--primary);
+  transition: height 0.3s;
+}
+.timeline-dot {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  background-color: var(--primary);
+  border-radius: 50%;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.timeline-dot.left {
+  left: -5px;
+}
+.timeline-dot.right {
+  left: calc(100% + 5px);
+}
+.popup-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: flex-start;
+}
+.popup-container h2{
+  font-size:30px;
+  padding:5px 0px;
+}
+.popup-container span {
+  margin-left: 0px;
+  font-weight:600;
+  border-radius: 9999px;
+  margin-top: 20px;
+}
+/* pop up container first tag */
+.popup-container p {
+  max-width: 400px;
+}
+.popup-container .price {
+  font-size: 2rem;
+  color:var(--primary);
+}
+.menu-footer {
+  text-align: center;
+  margin-top: 40px;
+  color: #888;
+}
+.view-all {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #333;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+}
+.view-all:hover {
+  background-color: #444;
+}
+
+@media (max-width: 768px) {
+  .menu-grid {
+      grid-template-columns: 1fr;
+  }
+  .menu-item h2{
+    margin: 0 0 0 0;
+  }
+  .menu-item-image {
+      width: 100%;
+  }
+  .menu-item-content{
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center; 
+    gap:20px
+  }
+  .timeline {
+      left: 20px;
+      transform: none;
+  }
+  .menu-item {
+      margin-left: 40px;
+      flex-direction: column;
+  }
+  .timeline-dot {
+      left: 20px;
+      transform: none;
+  }
+  .timeline-dot.left, .timeline-dot.right {
+      left: 26px;
+  }
+}
+
+
+
+
+
+
+

@@ -1,0 +1,265 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/navbar.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/reservation.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/seats.css' %}" />
+    <script src="https://unpkg.com/lucide@latest"></script>
+  </head>
+  <body>
+    <div id="navbar-container">
+      <nav class="navbar-container" id="navbar">
+        <div class="links-container">
+          <ul>
+            <li class="tooltip-container">
+              <a
+                href="{% url 'index' %}"
+                class="nav-link {% if request.path == '/' %}active{% endif %}"
+              >
+                <i data-lucide="home"></i>
+              </a>
+              <span class="tooltip">Home</span>
+            </li>
+            <li class="tooltip-container">
+              <a
+                href="{% url 'about' %}"
+                class="nav-link {% if request.path == '/about/' %}active{% endif %}"
+              >
+                <i data-lucide="info"></i>
+              </a>
+              <span class="tooltip">About</span>
+            </li>
+            <li class="tooltip-container">
+              <a
+                href="{% url 'menu' %}"
+                class="nav-link {% if request.path == '/menu/' %}active{% endif %}"
+              >
+                <i data-lucide="utensils"></i>
+              </a>
+              <span class="tooltip">Menu</span>
+            </li>
+            <li class="tooltip-container">
+              <a
+                href="{% url 'contact' %}"
+                class="nav-link {% if request.path == '/contact/' %}active{% endif %}"
+              >
+                <i data-lucide="mail"></i>
+              </a>
+              <span class="tooltip">Contact</span>
+            </li>
+
+            <!-- Check if user is authenticated -->
+            {% if request.user.is_authenticated %}
+            <li class="tooltip-container">
+              <a
+                href="{% url 'dashboard' %}"
+                class="nav-link {% if request.path == '/dashboard/' %}active{% endif %}"
+              >
+                <i data-lucide="layout-dashboard"></i>
+              </a>
+              <span class="tooltip">Dashboard</span>
+            </li>
+            <li class="tooltip-container">
+              <a
+                href="{% url 'logout' %}"
+                class="nav-link {% if request.path == '/logout/' %}active{% endif %}"
+              >
+                <i data-lucide="log-out"></i>
+              </a>
+              <span class="tooltip">Logout</span>
+            </li>
+            {% else %}
+            <li class="tooltip-container">
+              <a
+                href="{% url 'reservation' %}"
+                class="nav-link {% if request.path == '/reservation/' %}active{% endif %}"
+              >
+                <i data-lucide="calendar"></i>
+              </a>
+              <span class="tooltip">Reservation</span>
+            </li>
+            <li class="tooltip-container">
+              <a
+                href="{% url 'auth' %}"
+                class="nav-link {% if request.path == '/auth/' %}active{% endif %}"
+              >
+                <i data-lucide="log-in"></i>
+              </a>
+              <span class="tooltip">Login</span>
+            </li>
+            {% endif %}
+          </ul>
+        </div>
+      </nav>
+    </div>
+
+    <div class="lux-container">
+      <div class="reservation-container">
+        <div class="seat-booking-container">
+          <h2 class="text-center mb-2">Seat Availability</h2>
+          <form class="seat-booking-input-container" id="seatCheckForm">
+            <div>
+              <div class="lux-input-wrapper">
+                <div class="lux-icon-wrapper">
+                  <ion-icon name="calendar-outline"></ion-icon>
+                  <input
+                    type="date"
+                    name="selectedDate"
+                    id="selectedDate"
+                    class="lux-input-field"
+                    required
+                  />
+                </div>
+              </div>
+              <div class="lux-input-wrapper">
+                <div class="lux-icon-wrapper">
+                  <ion-icon name="time-outline"></ion-icon>
+                  <select
+                    name="selectedTime"
+                    id="selectedTime"
+                    class="lux-input-field"
+                    required
+                  >
+                    <option value="" disabled selected>Preferred Time</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <button type="submit" class="seat-button">
+              <span class="lux-button-text">CHECK</span>
+            </button>
+          </form>
+          <div id="seatGrid" class="seat-grid"></div>
+          <div class="legend">
+            <div class="legend-item">
+              <div class="seat available"></div>
+              <span>Available: <span id="availableSeats"></span></span>
+            </div>
+            <div class="legend-item">
+              <div class="seat booked"></div>
+              <span>Booked: <span id="bookedSeats"></span></span>
+            </div>
+          </div>
+        </div>
+        <div class="lux-reservation-form">
+          <form class="lux-form-left" id="reservationForm">
+            <h2 class="lux-heading">Exquisite Dining</h2>
+            <p class="lux-form-text">
+              Reserve your table for an unforgettable culinary experience
+            </p>
+            <div class="lux-input-wrapper">
+              <div class="lux-icon-wrapper">
+                <ion-icon name="person-outline"></ion-icon>
+                <input
+                  type="text"
+                  name="name"
+                  placeholder="Your Name"
+                  autocomplete="off"
+                  class="lux-input-field"
+                  required
+                />
+              </div>
+            </div>
+            <div class="lux-input-wrapper">
+              <div class="lux-icon-wrapper">
+                <ion-icon name="call-outline"></ion-icon>
+                <input
+                  type="text"
+                  id="phone"
+                  name="phone"
+                  placeholder="Phone Number"
+                  maxlength="10"
+                  autocomplete="off"
+                  class="lux-input-field"
+                  required
+                />
+              </div>
+            </div>
+            <div class="lux-input-row">
+              <div class="lux-input-wrapper">
+                <div class="lux-icon-wrapper">
+                  <ion-icon name="people-outline"></ion-icon>
+                  <select
+                    name="person"
+                    id="guestsSelect"
+                    class="lux-input-field"
+                    required
+                  >
+                    <option value="" disabled selected>Number of Guests</option>
+                  </select>
+                </div>
+              </div>
+              <div class="lux-input-wrapper">
+                <div class="lux-icon-wrapper">
+                  <ion-icon name="calendar-outline"></ion-icon>
+                  <input
+                    type="date"
+                    name="reservation-date"
+                    id="reservationDate"
+                    class="lux-input-field"
+                    required
+                  />
+                </div>
+              </div>
+              <div class="lux-input-wrapper">
+                <div class="lux-icon-wrapper">
+                  <ion-icon name="time-outline"></ion-icon>
+                  <select
+                    name="time"
+                    id="reservationTime"
+                    class="lux-input-field"
+                    required
+                  >
+                    <option value="" disabled selected>Preferred Time</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="lux-input-wrapper">
+              <div class="lux-icon-wrapper">
+                <ion-icon name="chatbubble-outline"></ion-icon>
+                <textarea
+                  name="message"
+                  placeholder="Special Requests"
+                  autocomplete="off"
+                  class="lux-input-field"
+                  rows="3"
+                ></textarea>
+              </div>
+            </div>
+            <div id="error-message"></div>
+            <button type="submit" class="lux-button">
+              <span class="lux-button-text">Reserve Your Table</span>
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div id="popupOverlay" class="popup-overlay">
+      <div class="popup-content">
+        <div id="loadingSpinner" class="loading-spinner"></div>
+        <div id="spinner-text"><p>please wait...</p></div>
+        <div id="popupMessage">
+          <h2 id="popupTitle"></h2>
+          <p id="popupText"></p>
+
+          <div class="reservation-popup-button-container">
+            <a href="/" class="back-home-button">Back to Home</a>
+            <button id="closePopup" class="close-button">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <script src="{% static 'js/reservation/data-fetch.js' %}"></script>
+    <script>
+      lucide.createIcons();
+    </script>
+    <script src="{% static 'js/navbar/navbar.js' %}"></script>
+  </body>
+</html>

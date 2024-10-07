@@ -1,0 +1,88 @@
+.gh-contact {
+  background-color: var(--background);
+  color: var(--foreground);
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 4rem 2rem;
+  align-items: center;
+  border-radius: 20px;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.gh-contact__image {
+  flex: 1 1 400px;
+  margin-right: 4rem;
+}
+
+.gh-contact__image img {
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease;
+}
+
+.gh-contact__image img:hover {
+  transform: scale(1.05);
+}
+
+.gh-contact__details {
+  flex: 1 1 400px;
+}
+
+.gh-contact__title {
+  color: var(--primary);
+  margin-bottom: 1rem;
+  font-size: 2.5rem;
+  font-weight: bold;
+}
+
+.gh-contact__description {
+  margin-bottom: 2rem;
+  font-size: 1.1rem;
+}
+
+.gh-contact__info {
+  margin-top: 2rem;
+}
+
+.gh-contact__info-item {
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+}
+
+.gh-contact__info-item strong {
+  color: var(--primary);
+}
+
+.gh-contact__animate {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.gh-contact__fade-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+  .gh-contact {
+    flex-direction: column-reverse;
+    padding: 2rem 1rem;
+
+  }
+
+  .gh-contact__image {
+    margin-right: 0;
+    margin-bottom: 2rem;
+    width: 100%;
+  }
+
+  .gh-contact__title {
+    font-size: 2rem;
+  }
+}

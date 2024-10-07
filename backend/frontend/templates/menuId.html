@@ -1,0 +1,178 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/menu-page.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/navbar.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/reservation.css' %}" />
+    <script src="https://unpkg.com/lucide@latest"></script>
+  </head>
+  <body>
+    <div id="navbar-container">
+      <nav class="navbar-container" id="navbar">
+        <div class="links-container">
+          <ul>
+            <li class="tooltip-container">
+              <a
+                href="{% url 'index' %}"
+                class="nav-link {% if request.path == '/' %}active{% endif %}"
+              >
+                <i data-lucide="home"></i>
+              </a>
+              <span class="tooltip">Home</span>
+            </li>
+            <li class="tooltip-container">
+              <a
+                href="{% url 'about' %}"
+                class="nav-link {% if request.path == '/about/' %}active{% endif %}"
+              >
+                <i data-lucide="info"></i>
+              </a>
+              <span class="tooltip">About</span>
+            </li>
+            <li class="tooltip-container">
+              <a
+                href="{% url 'menu' %}"
+                class="nav-link {% if request.path == '/menu/' %}active{% endif %}"
+              >
+                <i data-lucide="utensils"></i>
+              </a>
+              <span class="tooltip">Menu</span>
+            </li>
+            <li class="tooltip-container">
+              <a
+                href="{% url 'contact' %}"
+                class="nav-link {% if request.path == '/contact/' %}active{% endif %}"
+              >
+                <i data-lucide="mail"></i>
+              </a>
+              <span class="tooltip">Contact</span>
+            </li>
+
+            <!-- Check if user is authenticated -->
+            {% if request.user.is_authenticated %}
+            <li class="tooltip-container">
+              <a
+                href="{% url 'dashboard' %}"
+                class="nav-link {% if request.path == '/dashboard/' %}active{% endif %}"
+              >
+                <i data-lucide="layout-dashboard"></i>
+              </a>
+              <span class="tooltip">Dashboard</span>
+            </li>
+            <li class="tooltip-container">
+              <a
+                href="{% url 'logout' %}"
+                class="nav-link {% if request.path == '/logout/' %}active{% endif %}"
+              >
+                <i data-lucide="log-out"></i>
+              </a>
+              <span class="tooltip">Logout</span>
+            </li>
+            {% else %}
+            <li class="tooltip-container">
+              <a
+                href="{% url 'reservation' %}"
+                class="nav-link {% if request.path == '/reservation/' %}active{% endif %}"
+              >
+                <i data-lucide="calendar"></i>
+              </a>
+              <span class="tooltip">Reservation</span>
+            </li>
+            <li class="tooltip-container">
+              <a
+                href="{% url 'auth' %}"
+                class="nav-link {% if request.path == '/auth/' %}active{% endif %}"
+              >
+                <i data-lucide="log-in"></i>
+              </a>
+              <span class="tooltip">Login</span>
+            </li>
+            {% endif %}
+          </ul>
+        </div>
+      </nav>
+    </div>
+    <div id="menu-item-container" data-menu-id="{{ menu_id }}">
+      <div class="lux-container">
+        <div id="menu-item-page-container" class="menu-item-page-container">
+          <div class="menu-item-page-header">
+            <h1 id="menu-item-page-title" class="menu-item-page-title"></h1>
+          </div>
+          <div class="menu-item-page-content">
+            <img
+              id="menu-item-page-image"
+              alt="Menu item image"
+              class="menu-item-page-image"
+            />
+            <div class="menu-item-page-details">
+              <p class="menu-item-page-price">
+                <ion-icon name="pricetag-outline"></ion-icon>
+                ₹<span id="menu-item-page-price"></span>
+              </p>
+              <p
+                id="menu-item-page-description"
+                class="menu-item-page-description"
+              ></p>
+              <h2 class="menu-item-page-subtitle">
+                <ion-icon name="nutrition-outline"></ion-icon>
+                Types:
+              </h2>
+              <ul
+                id="menu-item-page-ingredients"
+                class="menu-item-page-ingredients"
+              ></ul>
+              <h2 class="menu-item-page-subtitle">
+                <ion-icon name="information-circle-outline"></ion-icon>
+                Nutritional Information:
+              </h2>
+              <p
+                id="menu-item-page-nutrition"
+                class="menu-item-page-nutrition"
+              ></p>
+            </div>
+          </div>
+          <button id="back-button" class="back-button">
+            <ion-icon name="arrow-back-outline"></ion-icon>
+            Back to Menu
+          </button>
+        </div>
+
+        <div id="menu-item-page-container">
+          <div id="loading-skeleton" class="menu-item-page-container">
+            <div class="menu-item-page-header">
+              <div class="skeleton skeleton-title"></div>
+            </div>
+            <div class="menu-item-page-content">
+              <div class="skeleton skeleton-image"></div>
+              <div class="menu-item-page-details">
+                <div class="skeleton skeleton-text skeleton-price"></div>
+                <div class="skeleton skeleton-text skeleton-types"></div>
+                <div class="skeleton skeleton-text skeleton-nutrition"></div>
+              </div>
+            </div>
+            <button id="back-button-loading" class="back-button">
+              <ion-icon name="arrow-back-outline"></ion-icon>
+              Back to Menu
+            </button>
+          </div>
+        </div>
+
+        <div id="error-container" class="error-container" style="display: none">
+          <ion-icon name="alert-circle-outline" class="error-icon"></ion-icon>
+          <p id="error-message" class="error-message"></p>
+          <button id="retry-button" class="retry-button">Retry</button>
+        </div>
+      </div>
+    </div>
+    <script>
+      lucide.createIcons();
+    </script>
+    <script src="{% static 'js/menuId/data-fetch.js' %}"></script>
+    <script src="{% static 'js/navbar/navbar.js' %}"></script>
+  </body>
+</html>

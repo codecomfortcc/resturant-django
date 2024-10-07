@@ -1,0 +1,16 @@
+.main-404-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f8f9fa;
+  overflow: hidden;
+}
+.image_404 {
+  width: 50%;
+  max-width: 500px;
+}
+svg{
+  width: 100%;
+  max-width: 500px;
+}

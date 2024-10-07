@@ -1,0 +1,140 @@
+.our-story-container {
+  display: flex;
+  justify-content:space-around;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  gap: 2rem;
+}
+
+.d3-card {
+  flex: 1 1 0;
+  perspective: 1500px;
+  padding: 50px;
+
+}
+
+.d3-card-inner {
+  width: 100%;
+  height: 0;
+  padding-bottom: 100%;
+  position: relative;
+  transition: transform 0.3s ease;
+  transform-style: preserve-3d;
+}
+
+.d3-card-front {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: var(--radius);
+  overflow: hidden;
+  background-color: var(--d3-card);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1)
+}
+.d3-card-inner::before{
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 100;
+  opacity: 0;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.d3-card-inner:hover::before {
+  opacity: 1;
+}
+.image-data{
+  position: absolute;
+  bottom: 20px;
+  left: 10px;
+  color:white;
+
+  transform: translateY(30px);
+  opacity: 0;
+  transition: all 0.3s ease;
+  user-select: none;
+  cursor: pointer;
+}
+
+.d3-card-inner:hover .image-data {
+  transform: translateY(0);
+  opacity: 1;
+  z-index:200;
+}
+.d3-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+
+@media (max-width: 768px) {
+  .our-story-container {
+    flex-direction: column-reverse;
+  }
+  .d3-card{
+    padding: 10px;
+  }
+}
+.story-content {
+  padding: 30px;
+  flex: 1 1 0;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.story-paragraph {
+  margin-bottom: 20px;
+  opacity: 0;
+  transform: translateX(-20px);
+  color:var(--muted-foreground);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.story-paragraph.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.highlight {
+  color: var(--primary);
+  font-weight: 600;
+}
+
+.timeline-two {
+  position: relative;
+  padding-left: 30px;
+  margin-top: 30px;
+  border-left: 2px solid var(--primary);
+}
+
+.timeline-item {
+  margin-bottom: 20px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.timeline-item.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  left: -20px;
+  top: 7px;
+  width: 12px;
+  height: 12px;
+  background-color: var(--primary);
+
+  border-radius: 50%;
+}
